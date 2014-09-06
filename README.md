@@ -2,16 +2,16 @@ titan-web-example
 =================
 This is an example project that shows one way to build a RESTful Java web app around Titan, Cassandra, and Elasticsearch.
 
-The application is built using Spring (in-code annotations based config), JAX-RS, and Jersey. It is assumed that you are already familiar with these technologies. A Servlet Filter is wired up to show how TitanGraph transactions can be managed with a pre/post request Filter.
+The application is built using Spring (annotations based config), JAX-RS, and Jersey. It is assumed that you are already familiar with these technologies. A Servlet Filter is wired up to show how TitanGraph transactions can be managed with a pre/post request Filter.
 
-This example also shows how Groovy classes can be injected into a Java web app to enable Gremlin Groovy sweetness. (See src/main/groovy).
+This example also shows how Groovy classes can be injected into a Java web app to enable Gremlin Groovy sweetness. (See src/main/groovy/.)
 
 The "graph of the gods" example data set is used.
 
 Getting Started
 ===============
 
-If you prefer to install Cassandra and ES manually then skip the first 3 steps.
+If you prefer to install Cassandra and ES manually then skip the first 3 steps but make sure you adjust the titan-cassandra-es.properties file's host values accordingly.
 
 - Install [Virtual Box](https://www.virtualbox.org/wiki/Downloads) (because you need it for Vagrant).
 
