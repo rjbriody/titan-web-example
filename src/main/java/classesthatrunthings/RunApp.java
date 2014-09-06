@@ -12,7 +12,7 @@ import java.io.File;
  *
  * Fire it up and go to http://localhost:9091
  */
-public class RunnApp {
+public class RunApp {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Working directory: " + new File("./").getAbsolutePath().toString());
