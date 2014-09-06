@@ -2,7 +2,9 @@ titan-web-example
 =================
 This is an example project that shows one way to build a RESTful Java web app around Titan, Cassandra, and Elasticsearch.
 
-The application is built using Spring (using annotations), JAX-RS, and Jersey. A Servlet Filter is wired up to show how a Fitler can be used to manage TitanGraph transactions.
+The application is built using Spring (in-code annotations based config), JAX-RS, and Jersey. It is assumed that you are already familiar with these technologies. A Servlet Filter is wired up to show how TitanGraph transactions can be managed with a pre/post request Filter.
+
+This example also shows how Groovy classes can be injected into a Java web app to enable Gremlin Groovy sweetness. (See src/main/groovy).
 
 The "graph of the gods" example data set is used.
 
@@ -28,3 +30,14 @@ cd titan-web-example/vagrant; vagrant up
 - Visit http://localhost:9091
 
 If the links works then it's time to dig in to the code and see what's goin on! Start with the TitanWebService class.
+
+Resources
+=========
+
+[Titan Docs](http://s3.thinkaurelius.com/docs/titan/0.5.0-SNAPSHOT/)
+
+http://gremlindocs.com
+
+http://thinkaurelius.com/blog/
+
+Q&A happens in the [Aurelius Google Group](https://groups.google.com/forum/#!forum/aureliusgraphs) or on http://stackoverflow.com. If you have questions then those are the best places to search first.
