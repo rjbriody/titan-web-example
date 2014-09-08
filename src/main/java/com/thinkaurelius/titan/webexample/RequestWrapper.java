@@ -5,14 +5,16 @@ import com.sun.jersey.spi.container.ContainerRequestFilter;
 import com.sun.jersey.spi.container.ContainerResponse;
 import com.sun.jersey.spi.container.ContainerResponseFilter;
 import com.thinkaurelius.titan.core.TitanGraph;
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * This class will intercept all incoming requests and outgoing responses. A transaction is created at the start of
- * every request and committed when the response is sent out. If an error occurs then a rollback is performed. This is a
- * pretty basic transaction strategy.
+ * This class intercepts all incoming requests and outgoing responses. Essentially, it wraps all Servlet traffic. A
+ * rollback is executed at the beginning and end of each Request.
+ * <p/>
+ * In practice, you will need to choose a transaction scheme suitable for your use cases. Performing a rollback before
+ * and after each request is only suitable for a read-only application. If your application performs writes then they
+ * will need to be explicitly committed within your application code.
  */
 @Component
 public class RequestWrapper implements ContainerResponseFilter, ContainerRequestFilter {
@@ -39,10 +41,7 @@ public class RequestWrapper implements ContainerResponseFilter, ContainerRequest
      */
     @Override
     public ContainerResponse filter(ContainerRequest containerRequest, ContainerResponse containerResponse) {
-        if (containerResponse.getStatus() != HttpStatus.SC_OK)
-            g.rollback(); // no bueno, rollback.
-        else
-            g.commit(); // status ok, commit.
+        g.rollback(); // perform a rollback to clean up any dangling transactions
         return containerResponse;
     }
 }
